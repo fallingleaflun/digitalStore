@@ -61,7 +61,7 @@ public class CreateOrderServlet extends HttpServlet {
 		int order_id = service.addOrder(order);
 		// 5.发送确认订单邮件，这里申请服务器之后要填服务器的地址
 					String emailMsg = "感谢你在数码商城购物，点击"
-							+ "<a href='http://localhost:8089/mystore/activeOrder?order_id="
+							+ "<a href='http://101.200.206.46:8080/mystore/activeOrder?order_id="
 							+ order_id + "'>&nbsp;确认订单</a>";
 					try {
 						MailUtils.sendMail(user.getEmail(), emailMsg);

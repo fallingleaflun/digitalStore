@@ -39,4 +39,11 @@ public class UserDao {
 		return runner.query(sql, new BeanHandler<User>(User.class),username,password);
 	}
 
+	public void modifyUser(int user_id, String password, String tel, String introduce) throws SQLException {
+		// TODO Auto-generated method stub
+		String sql ="update  `user` set `password` = ?, `tel` = ?, `introduce` = ? where id=?";
+		QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
+		runner.update(sql, password, tel, introduce, user_id);
+	}
+
 }

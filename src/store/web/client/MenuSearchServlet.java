@@ -29,15 +29,14 @@ public class MenuSearchServlet extends HttpServlet {
 		int currentCount = 4;	
 		//获取前台页面搜索框输入的值
 		String searchfield = req.getParameter("textfield");
-		//如果搜索框中没有输入值，则表单传递的为默认值，此时默认查询全部商品目录
-		if("请输入商品名".equals(searchfield)){
-			req.getRequestDispatcher("/showProductByPage").forward(req, resp);
+		//如果搜索框中没有输入值则刷新
+		if("".equals(searchfield)){
+			resp.sendRedirect(req.getContextPath() + "/client/index.jsp");
 			return;
 		}
 		//调用service层的方法，通过商品名模糊查询，查找相应的商品
 		ProductService service = new ProductService();
 		PageBean bean = service.findBookByName(currentPage,currentCount,searchfield);
-		// 将数据存储到request范围，跳转到product_search_list.jsp页面展示
 		req.setAttribute("bean", bean);
 		req.getRequestDispatcher("/client/product_search_list.jsp").forward(req, resp);
 	}

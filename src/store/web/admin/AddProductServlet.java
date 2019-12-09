@@ -109,7 +109,7 @@ public class AddProductServlet extends HttpServlet {
 			return;
 		} catch (AddProductException e) {
 			e.printStackTrace();
-			response.getWriter().write("添加商品失败");
+			response.getWriter().write("add product fail");
 			return;
 		}
 	}

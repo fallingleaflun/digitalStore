@@ -18,7 +18,9 @@ import javax.servlet.http.HttpServletRequestWrapper;
 		"/error/*",
 		"/client/createOrder",
 		"/client/activeOrder",
-		"/delOrderById"
+		"/delOrderById",
+		"/exception/*",
+		"/client/menu_search.jsp"
 		})
 public class EncodingFilter implements Filter {
 	public void init(FilterConfig filterConfig) throws ServletException {
@@ -27,6 +29,7 @@ public class EncodingFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
 		// 处理请求乱码
+		System.out.println("编码过滤器被执行");
 		HttpServletRequest httpServletRequest = (HttpServletRequest) request;
 		HttpServletRequest myRequest = new MyRequest(httpServletRequest);
 		// 处理响应乱码

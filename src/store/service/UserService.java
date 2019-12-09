@@ -15,7 +15,7 @@ public class UserService {
 			dao.addUser(user);
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new RegisterException("注册失败");
+			throw new RegisterException("Register fail");
 		}
 	}
 	// 登录操作
@@ -29,12 +29,26 @@ public class UserService {
 				if (user.getState() == 1) {
 					return user;
 				}
-				throw new LoginException("用户不可用");
+				throw new LoginException("no such user");
 			}
-			throw new LoginException("用户名或密码错误");
+			throw new LoginException("username or password is incorrect");
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new LoginException("登录失败");
+			throw new LoginException("login fail");
+		}
+	}
+	public void modifyUser(int user_id, String password, String tel, String introduce) {
+		// TODO Auto-generated method stub
+		try {
+			dao.modifyUser(user_id, password, tel, introduce);
+		} catch (Exception e) {
+			e.printStackTrace();
+			try {
+				throw new RegisterException("modify fail");
+			} catch (RegisterException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 	}
 }

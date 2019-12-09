@@ -34,14 +34,18 @@ public class ShowProductByPageServlet extends HttpServlet {
 		// 3.获取查找的分类
 		String category = "全部商品";
 		String _category = request.getParameter("category");
+		System.out.println("ShowProductServlet:获得的category是:" + _category);
 		if (_category != null) {
 			category = _category;
+		}
+		if(_category == null) {
+			response.sendRedirect(request.getContextPath() + "/client/index.jsp");
+			return;
 		}
 		// 4.调用service，完成获取当前页分页Bean数据.
 		ProductService service = new ProductService();
 		PageBean bean = service.findProductByPage(currentPage, currentCount,
 				category);
-		// 将数据存储到request范围，跳转到product_list.jsp页面展示
 		request.setAttribute("bean", bean);
 		request.getRequestDispatcher("/client/product_list.jsp").forward(request, response);
 		return;

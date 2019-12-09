@@ -2,7 +2,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-	<title>电子书城</title>
+	<title>数码商城</title>
 	<link rel="stylesheet" href="${pageContext.request.contextPath }/client/css/main.css" type="text/css" />
 	<!-- 统计停留时间 -->
 	<script src="${pageContext.request.contextPath }/client/js/jquery-3.4.1.min.js" type="text/javascript"></script>

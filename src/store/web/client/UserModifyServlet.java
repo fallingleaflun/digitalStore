@@ -7,20 +7,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import store.domain.Order;
-import store.service.OrderService;
+import store.domain.User;
+import store.service.UserService;
 
 /**
- * Servlet implementation class ActiveOrderServlet
+ * Servlet implementation class UserModifyServlet
  */
-@WebServlet("/activeOrder")
-public class ActiveOrderServlet extends HttpServlet {
+@WebServlet("/usermodify")
+public class UserModifyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ActiveOrderServlet() {
+    public UserModifyServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,16 +30,15 @@ public class ActiveOrderServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//根据传来的订单号去设置订单为已支付状态
-		String order_id = request.getParameter("order_id");
-		OrderService orderService = new OrderService();
-		Order order= orderService.findOrderById(order_id);
-		if(order == null) {
-			response.getWriter().write("No such order");
-			return;
-		}
-		orderService.updateState(order_id);
-		response.getWriter().write("Order confirm!");
+		String password = request.getParameter("password");
+		String tel = request.getParameter("tel");
+		String introduce = request.getParameter("introduce");
+        HttpServletRequest req = (HttpServletRequest) request;
+        User user = (User) req.getSession().getAttribute("user");
+        int user_id = user.getId();
+		UserService userService = new UserService();
+		userService.modifyUser(user_id,password, tel, introduce);
+		response.sendRedirect(request.getContextPath() + "/client/login.jsp");
 	}
 
 	/**

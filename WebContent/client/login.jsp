@@ -2,7 +2,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<title>电子书城</title>
+<title>数码商城</title>
 	<link rel="stylesheet" href="${pageContext.request.contextPath }/client/css/main.css" type="text/css" />
 </head>
 <body class="main">
@@ -15,6 +15,12 @@
 					<td style="padding:30px"><div style="height:470px">
 							<div>
 								<table width="85%" border="0" cellspacing="0" align="center">
+								<tr>
+								<td></td>
+								    <td style="text-align:center;padding-top:20px;"><font
+                                                            color="#ff0000">${requestScope["register_message"]}</font>
+                                                        </td>
+								</tr>
 									<tr>
                                         <td style="text-align:left; padding-top:20px; width:60%">
                                             <img src="${pageContext.request.contextPath }/client/images/loginLeft.jpg" width="300" height="360" style="border-radius: 5px;"/>
